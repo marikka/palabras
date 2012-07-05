@@ -10,10 +10,18 @@
     }
   });
 
+
+
+
+
   //////////////////////////////////////////////////////////
   var WordList = Backbone.Collection.extend({
     model: Word
   });
+
+
+
+
 
   //One word row
   var WordView = Backbone.View.extend({
@@ -29,26 +37,23 @@
     },
 
     render: function(){
-      $(this.el).html(this.wordTemplate({fi: this.model.attributes.fi, es: this.model.attributes.es, lastAsked: new Date(this.model.attributes.lastAsked).getDay(), rating: this.model.attributes.rating}));
+      $(this.el).html(this.wordTemplate({fi: this.model.attributes.fi, es: this.model.attributes.es, lastAsked: new Date(this.model.attributes.lastAsked).toString(), rating: this.model.attributes.rating}));
       return this;
     }
   });
 
-  //Application view
-  var AppView = Backbone.View.extend({
-    el: $('#app'),
+
+  //Manage view
+  var ManageView = Backbone.View.extend({
+    el: $('#manage'),
 
     events: {
-      'submit form': 'addWord'
+      'submit #newWord': 'addWord'
     },
 
     initialize: function(){
       _.bindAll(this, 'render', 'addWord', 'appendWord');
-      
-      this.collection = new WordList();
-      this.collection.bind('add', this.appendWord);
-      this.collection.reset([{fi: 'auto', es: 'coche'}])
-
+      this.collection.on('add', this.appendWord);
       this.render();
     },
 
@@ -60,11 +65,11 @@
     },
 
     addWord: function(e){
-      e.preventDefault();
+      e.preventDefault(); //prevent form submission
       var word = new Word();
       word.set({
-        fi: $("#word-fi").val(),
-        es: $("#word-es").val(),
+        fi: $("#word-fi", this.el).val(),
+        es: $("#word-es", this.el).val(),
         rating: 0,
         lastAsked: new Date()
       });
@@ -78,13 +83,18 @@
         model: word
       });
       $('tbody', this.el).append(wordView.render().el);
-    }
+    },
+  });
 
-
+  var TrainView = Backbone.View.extend({
 
   });
 
-  var appView = new AppView();
+
+
+  var wordList   = new WordList();
+  var manageView = new ManageView({collection: wordList});
+  var trainView  = new TrainView({collection: wordList});
 
 
 

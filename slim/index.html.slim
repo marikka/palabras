@@ -2,47 +2,66 @@ doctype html
 html
   head
     meta charset="utf-8"
+    link href="css/bootstrap.min.css" rel="stylesheet"
   body
-    #app
+    .container
+      .row
+        #app.span12
 
-      h1 Palabras!
-      #manage
+          h1 Palabras!
 
-        h2 Manage words
-        form id="newWord"
-          input type="text" id="word-fi" placeholder="suomeksi" required=""
-          input type="text" id="word-es" placeholder="espanjaksi" required=""
-          button id="add" Lisää sana
-        table
-          thead
-            tr
-              td Suomeksi
-              td Espanjaksi
-              td Osaaminen
-              td Viimeeksi kysytty
-          tbody
-      #train
-        h2 Train words
-        span id="currentWord"
-        form id="train"
-          input type="text" id="answerWord" placeholder="vastaus"
-          button Vastaa
+          ul class="nav nav-tabs"
+            li class="active"
+              a href="#manage" data-toggle="tab" Manage
+            li
+              a href="#train" data-toggle="tab" Train
+          div class="tab-content"
+            div class="tab-pane active" id="manage"
+              h2 Manage words
+              form id="newWord"
+                input type="text" id="word-fi" placeholder="suomeksi" required=""
+                input type="text" id="word-es" placeholder="espanjaksi" required=""
+                button.btn id="add" Lisää sana
+              table.table.table-striped
+                thead
+                  tr
+                    th Suomeksi
+                    th Espanjaksi
+                    th Osaaminen
+                    th Viimeeksi kysytty
+                tbody
+            div class="tab-pane" id="train"
+              h2 Train words
+              
+              form id="answer"
+                span id="question"
+                input type="text" id="answerWord" placeholder="vastaus" required=""
+                button Vastaa
+              table
+                tbody
+                
 
-      h2 Todo
-      ul
-        li Form validation
-        li Prevent (full) duplicates (same in both languages)
-        li Multiple languages
-        li Persist to localstorage
-        li Persist to (mongo?)DB
-        li Add CSS
-        li Word count / statistics view
-        li i18n
-        li Word import from online dictionary? Translation API?.. ?
-        li Set up testing
-        li Write tests
-    script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-    script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"
-    script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"
-    script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"
-    script src="js/palabras.js"
+          hr
+          h2 Todo
+          ul
+            li Form validation
+            li Prevent (full) duplicates (same in both languages)
+            li Multiple languages
+            li 
+              del Persist to localstorage
+            li Persist to (mongo?)DB
+            li Add CSS
+            li Word count / statistics view
+            li i18n
+            li Word import from online dictionary? Translation API?.. ?
+            li Set up testing
+            li Write tests
+            li Add complete dictionaries/word lists from JSON files
+        script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+        script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"
+        script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"
+        script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"
+        script src="js/backbone.localStorage-min.js"
+        script src="js/bootstrap.min.js"
+        script src="js/date.js"
+        script src="js/palabras.js"

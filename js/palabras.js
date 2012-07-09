@@ -2,6 +2,7 @@
 
   'use strict';
 
+
   //////////////////////////////////////////////////////////
   var Word = Backbone.Model.extend({
     defaults: {
@@ -19,15 +20,16 @@
   });
 
 
-
-
-
   //////////////////////////////////////////////////////////
   var WordList = Backbone.Collection.extend({
     model: Word,
     localStorage: new Backbone.LocalStorage("SomeCollection"),
     initialize: function() {
       this.fetch();
+    },
+    //Use underscore mixin function
+    weightedRandom: function() {
+      return _['weightedRandom'].apply(_, [this.models].concat(_.toArray(arguments)));
     } 
   });
 
@@ -45,7 +47,7 @@
 
     initialize: function(){
       _.bindAll(this, 'render');
-      this.wordTemplate = _.template('<td><%= fi %></td><td><%= es %></td><td><div class="progress"><div class="bar" style="width: <%= rating %>%;"><%= rating %></div></div></td><td><%= lastAsked %></td><td><a class="btn btn-danger delete" type="button"><i class="icon-trash icon-white"></i> Delete</button></td>');
+      this.wordTemplate = _.template('<td><%= fi %></td><td><%= es %></td><td><div class="progress"><div class="bar" style="width: <%= rating %>%;"><%= rating %></div></div></td><td><%= lastAsked %></td><td><a class="btn btn-small btn-danger delete" type="button"><i class="icon-trash icon-white"></i> Delete</button></td>');
       this.model.on('change', this.render);
     },
 
@@ -90,7 +92,7 @@
         es: $("#word-es", this.el).val(),
         lastAsked: new Date()
       });
-      $('form')[0].reset();
+      $('form', this.el)[0].reset();
       this.collection.add(word);
       word.save();
       return false;
@@ -144,7 +146,7 @@
     },
 
     newQuestion: function(){
-      this.question = this.collection.shuffle()[0]; //Pick a random word
+      this.question = this.collection.weightedRandom(function(word){return 100 - word.get('rating');});
       this.render();
     }
 

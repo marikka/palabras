@@ -1,0 +1,14 @@
+{
+  "name": "palabras",
+  "version": "0.1.0",
+  "author": {
+    "name": "Marek Miettinen",
+    "email": "marek@marekmiettinen.fi"
+  },
+  "dependencies": {
+    "express": ">2.5.x",
+    "mongoose": ">2.7.x"
+  },
+  "engine": "node 0.6.x"
+
+}

@@ -1,17 +1,18 @@
 body {
   background-color: #ccc;
+  background: url('../img/irongrip.png');
 }
 
 header {
-  width: 960px;
-  margin: 30px auto;
+  padding: 20px;
 }
 
 #app {
-  width: 960px;
+  width: 980px;
   min-height: 900px;
   margin: 10px auto;
   background-color: white;
+  border: 1px solid #ccc;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -21,5 +22,12 @@ header {
 }
 
 #question {
+  display: inline-block;
   font-size: 24px;
+  width: 210px;
+  vertical-align: middle;
+}
+
+tr.mistake {
+  background-color: #ffeeee;
 }

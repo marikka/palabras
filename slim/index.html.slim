@@ -6,37 +6,48 @@ html
     link href="css/palabras.css" rel="stylesheet"
   body
     #app
-      h1
+      header
         img src="img/logo.png"
+        hr
       .container
         .row
           .span12
-            
+            div class="alert alert-info"
+              button type="button" class="close" data-dismiss="alert" x
+              strong Tervetuloa!
+              p ´¡palabras!´ auttaa sinua opiskelemaan espanjan sanastoa. Harjoittele sanastoa ´Harjoittele´-sivulla, tai lisää uusia sanoja ´Sanasto´-sivulla. Hauskaa opiskelua! :)
 
 
+            ul class="nav nav-pills"
+              li class="active"
+                a href="#train" data-toggle="tab" Harjoittele
+              li
+                a href="#manage" data-toggle="tab" Sanasto
             div class="tab-content"
               
               div class="tab-pane active" id="train"
-                h2 Opettele
                 form id="answer" class="well form-inline"
-                  span id="question" class="span3"
-                  input type="text" id="answerWord" placeholder="vastaus" required="" class="span3"
-                  button class="btn" Vastaa
+                  div id="question"
+                  input type="text" id="answerWord" placeholder="espanjaksi" required="" autocomplete="off"
+                  button class="btn btn-primary"
+                    i class="icon-ok icon-white"
+                    '  Vastaa
                 table.table id="answers"
                   thead
                     tr
                       th class="span3" Kysymys
                       th class="span3" Vastaus
-                      th class="span3" Oikea vastaus
+                      th class="span6" Oikea vastaus
                   tbody
                         
                   
               div class="tab-pane" id="manage"
-                h2 Sanat
                 form id="newWord" class="well form-inline"
-                  input type="text" id="word-fi" placeholder="suomeksi" required=""
-                  input type="text" id="word-es" placeholder="espanjaksi" required=""
-                  button.btn id="add" Lisää sana
+                  input type="text" id="word-fi" placeholder="suomeksi" required="" autocomplete="off"
+                  input type="text" id="word-es" placeholder="espanjaksi" required="" autocomplete="off"
+                  button class="btn btn-primary" id="add"
+                    i class="icon-plus icon-white"
+                    '  Lisää sana
                 table.table.table-striped
                   thead
                     tr
@@ -46,11 +57,7 @@ html
                       th class="span2" Viimeeksi kysytty
                       th class="span1" Toiminnot
                   tbody
-            ul class="nav nav-pills"
-              li class="active"
-                a href="#train" data-toggle="tab" Opettele
-              li
-                a href="#manage" data-toggle="tab" Sanat
+
 
     script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
     script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"

@@ -37,7 +37,7 @@
 
     initialize: function(){
       _.bindAll(this, 'render', 'deleteWord');
-      this.wordTemplate = _.template('<td><%= fi %></td><td><%= es %></td><td><div class="progress"><div class="bar" style="width: <%= rating %>%;"><%= rating %></div></div></td><td><%= lastAsked %></td><td><a class="btn btn-small btn-danger delete" type="button"><i class="icon-trash icon-white"></i> Delete</button></td>');
+      this.wordTemplate = _.template('<td><%= fi %></td><td><%= es %></td><td><div class="progress"><div class="bar" style="width: <%= rating %>%;"><%= rating %></div></div></td><td><%= lastAsked %></td><td><a class="btn btn-small btn-danger delete" type="button"><i class="icon-trash icon-white"></i> Poista</button></td>');
       this.model.on('change', this.render);
     },
 
@@ -129,10 +129,10 @@
       if(this.question.get('es') === answer)
       {
         this.question.save({lastAsked: new Date(), rating: this.question.get('rating') + 1});
-        $('#answers tbody', this.el).append('<tr><td>'+this.question.get('fi')+'</td>'+'<td>'+answer+'</td><td></td></tr>');
+        $('#answers tbody', this.el).prepend('<tr><td>'+this.question.get('fi')+'</td>'+'<td>'+answer+'</td><td></td></tr>');
       } else {
         this.question.save({lastAsked: new Date(), rating: this.question.get('rating') - 1});
-        $('#answers tbody', this.el).append('<tr><td>'+this.question.get('fi')+'</td>'+'<td>'+answer+'</td><td>'+this.question.get('es')+'</td></tr>');
+        $('#answers tbody', this.el).prepend('<tr class="mistake"><td>'+this.question.get('fi')+'</td>'+'<td>'+answer+'</td><td>'+this.question.get('es')+'</td></tr>');
       }
       
       this.newQuestion(); //Pick a new word

@@ -1,22 +1,21 @@
-
 var express  = require('express');
 var mongoose = require('mongoose');
 var app      = express.createServer();
+var port     = process.env.PORT || 5000;
 
+//Configure express
 app.configure('development', function(){
   app.use(express.static(__dirname + '/public'));
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-
-
   app.use(express.bodyParser()); //Used to parse JSON requests into req.body
   app.use(express.methodOverride());
   app.use(app.router);
-
 });
 
-
+//Connect to mongoDB database
 mongoose.connect('mongodb://localhost/palabras');
 
+//Specify Word
 var Word = mongoose.model('Word', new mongoose.Schema({
   fi: String,
   es: String,
@@ -24,21 +23,16 @@ var Word = mongoose.model('Word', new mongoose.Schema({
   lastAsked: Date
 }));
 
-app.get('/', function(req, res){
-  res.send('hello world');
-});
+//Routes/////////////////////////////////
 
-//GET ALL
+//Read all words
 app.get('/api/words', function(req, res){
-
-  //res.send([{fi: 'sana', es: 'palabra', lastAsked: new Date(), rating: 50, id: 2}]);
-
   return Word.find(function(err, words) {
     return res.send(words);
   });
 });
 
-//GET ONE
+//Read a word
 app.get('/api/words/:id', function(req, res){
   return Word.findById(req.params.id, function(err, word) {
     if (!err) {
@@ -47,7 +41,7 @@ app.get('/api/words/:id', function(req, res){
   });
 });
 
-//UPDATE ONE
+//Update a word
 app.put('/api/words/:id', function(req, res){
   return Word.findById(req.params.id, function(err, word) {
     word.es        = req.body.es;
@@ -64,7 +58,7 @@ app.put('/api/words/:id', function(req, res){
   });
 });
 
-//CREATE ONE
+//Create a word
 app.post('/api/words', function(req, res){
   var word;
   word = new Word({
@@ -81,7 +75,7 @@ app.post('/api/words', function(req, res){
   return res.send(word);
 });
 
-//DELETE ONE
+//Delete a word
 app.delete('/api/words/:id', function(req, res){
   return Word.findById(req.params.id, function(err, word) {
     return word.remove(function(err) {
@@ -93,6 +87,5 @@ app.delete('/api/words/:id', function(req, res){
   });
 });
 
-
-
-app.listen(3000);
+//Start server
+app.listen(port);

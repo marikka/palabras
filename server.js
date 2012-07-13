@@ -26,6 +26,10 @@ var Word = mongoose.model('Word', new mongoose.Schema({
 
 //Routes/////////////////////////////////
 
+app.get('/', function(req, res){
+  res.sendfile(__dirname + '/public/index.html')
+})
+
 //Read all words
 app.get('/api/words', function(req, res){
   return Word.find(function(err, words) {

@@ -12,8 +12,9 @@ app.configure('development', function(){
   app.use(app.router);
 });
 
+var dbURL = process.env.MONGOHQ_URL || 'mongodb://localhost/palabras';
 //Connect to mongoDB database
-mongoose.connect('mongodb://localhost/palabras');
+mongoose.connect(dbURL);
 
 //Specify Word
 var Word = mongoose.model('Word', new mongoose.Schema({

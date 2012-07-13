@@ -12,6 +12,16 @@ app.configure('development', function(){
   app.use(app.router);
 });
 
+app.configure('production', function(){
+  app.use(express.static(__dirname + '/public'));
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  app.use(express.bodyParser()); //Used to parse JSON requests into req.body
+  app.use(express.methodOverride());
+  app.use(app.router);
+});
+
+
+
 var dbURL = process.env.MONGOHQ_URL || 'mongodb://localhost/palabras';
 //Connect to mongoDB database
 mongoose.connect(dbURL);

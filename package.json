@@ -6,8 +6,8 @@
     "email": "marek@marekmiettinen.fi"
   },
   "dependencies": {
-    "express": ">2.5.x",
-    "mongoose": ">2.7.x"
+    "express": "2.5.x",
+    "mongoose": "2.7.x"
   },
   "engines":{
     "node": "0.8.x",

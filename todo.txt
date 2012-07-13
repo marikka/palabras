@@ -1,0 +1,13 @@
+
+-Form validation
+-Prevent (full) duplicates (same in both languages)
+-Multiple languages
+-Persist to localstorage
+-Persist to (mongo?)DB
+-Add CSS
+-Word count / statistics view
+-i18n
+-Word import from online dictionary? Translation API?.. ?
+-Set up testing
+-Write tests
+-Add complete dictionaries/word lists from JSON files

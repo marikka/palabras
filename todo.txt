@@ -8,9 +8,15 @@
 -i18n
 -Word import from online dictionary? Translation API?.. ?
 -Set up testing
+  -Jasmine 
+  -CasperJS(?)
 -Write tests
 -Add complete dictionaries/word lists from JSON files
 -Extend to arbitrary languages
+-Use jade templates
+-Use transparency
+-Use RequireJS(?)
+-Trim & lowercase input
 
 Done:
 --------------------------

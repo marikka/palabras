@@ -57,6 +57,20 @@ html
                       th class="span2" Viimeeksi kysytty
                       th class="span1" Toiminnot
                   tbody
+    #templates style="display:none;"
+      table
+        tbody
+          tr id="word"
+            td.fi
+            td.es
+            td
+              .progress
+                .rating.bar
+            td.lastAsked
+            td.actions
+              a class="btn btn-small btn-danger delete" type="button"
+                i class="icon-trash icon-white"
+                ' Poista
 
 
     script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
@@ -68,4 +82,5 @@ html
     script src="js/bootstrap.min.js"
     script src="js/date.js"
     script src="js/underscore-weighted-random.js"
+    script src="js/transparency.min.js"
     script src="js/palabras.js"

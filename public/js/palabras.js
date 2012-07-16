@@ -1,4 +1,4 @@
-(function($){
+(function ($) {
 
   'use strict';
 
@@ -8,11 +8,11 @@
     defaults: {
       rating: 0
     },
-    initialize: function(){
+    initialize: function () {
       this.on('change:rating', this.enforceRatingBounds, this);
     },
-    enforceRatingBounds: function() {
-      this.set('rating', Math.max(Math.min(this.get('rating'), 100),0));
+    enforceRatingBounds: function () {
+      this.set('rating', Math.max(Math.min(this.get('rating'), 100), 0));
     }
   });
 
@@ -22,31 +22,47 @@
     //localStorage: new Backbone.LocalStorage("SomeCollection"),
     url: '/api/words',
     //Use underscore mixin function
-    weightedRandom: function() {
+    weightedRandom: function () {
       return _['weightedRandom'].apply(_, [this.models].concat(_.toArray(arguments)));
-    } 
+    }
   });
 
   //One word row ///////////////////////////////////////////
   var WordView = Backbone.View.extend({
     tagName: 'tr',
+    templateBase: $('#templates #word').detach(),
 
     events: {
       'click a.delete': 'deleteWord'
     },
 
-    initialize: function(){
+    initialize: function () {
       _.bindAll(this, 'render', 'deleteWord');
-      this.wordTemplate = _.template('<td><%= fi %></td><td><%= es %></td><td><div class="progress"><div class="bar" style="width: <%= rating %>%;"><%= rating %></div></div></td><td><%= lastAsked %></td><td><a class="btn btn-small btn-danger delete" type="button"><i class="icon-trash icon-white"></i> Poista</button></td>');
       this.model.on('change', this.render);
+      this.template = this.templateBase.clone();
     },
 
-    render: function(){
-      $(this.el).html(this.wordTemplate({fi: this.model.attributes.fi, es: this.model.attributes.es, lastAsked: new Date(this.model.attributes.lastAsked).toString("d.M.yyyy HH:mm") , rating: this.model.attributes.rating}));
+    render: function () {
+      var directives = {
+        lastAsked: {
+          text: function (params) {
+            return new Date(this.lastAsked).toString("d.M.yyyy HH:mm");
+          }
+        },
+        rating: {
+          style: function (params) {
+            return 'width:' + this.rating + '%;';
+          }
+        }
+      };
+      
+      var foo = this.template.render(this.model.toJSON(), directives).children();
+      this.$el.html(foo);
+
       return this;
     },
 
-    deleteWord: function(){
+    deleteWord: function () {
       this.model.destroy();
       this.remove();
     }
@@ -61,22 +77,22 @@
       'submit #newWord': 'addWord'
     },
 
-    initialize: function(){
+    initialize: function () {
       _.bindAll(this, 'render', 'addWord', 'appendWord');
       this.collection.on('add', this.appendWord);
       this.collection.on('reset', this.render);
       this.collection.fetch();
     },
 
-    render: function(){
+    render: function () {
       var self = this;
-      _(this.collection.models).each(function(word){ // in case collection is not empty
+      _(this.collection.models).each(function (word) { // in case collection is not empty
         self.appendWord(word);
       }, this);
     },
 
     //Add a new word to the collection
-    addWord: function(e){
+    addWord: function (e) {
       e.preventDefault(); //prevent form submission
       var word = new Word();
       word.set({
@@ -91,7 +107,7 @@
     },
 
     //Create a view for a word
-    appendWord: function(word){
+    appendWord: function (word) {
       var wordView = new WordView({
         model: word
       });
@@ -108,26 +124,24 @@
       'submit #answer': 'checkAnswer'
     },
 
-    initialize: function(){
+    initialize: function () {
       _.bindAll(this, 'render', 'checkAnswer', 'newQuestion');
       this.collection.on('reset', this.newQuestion);
     },
 
-    render: function(){
-      if(this.question)
-      {
-        $('#question', this.el).html(this.question.get('fi'));       
+    render: function () {
+      if (this.question) {
+        $('#question', this.el).html(this.question.get('fi'));
       }
     },
 
-    checkAnswer: function(e){
+    checkAnswer: function (e) {
       e.preventDefault();
 
       var answer = $("#answerWord", this.el).val();
       $('form', this.el)[0].reset();
 
-      if(this.question.get('es') === answer)
-      {
+      if (this.question.get('es') === answer) {
         this.question.save({lastAsked: new Date(), rating: this.question.get('rating') + 1});
         $('#answers tbody', this.el).prepend('<tr><td>'+this.question.get('fi')+'</td>'+'<td>'+answer+'</td><td></td></tr>');
       } else {

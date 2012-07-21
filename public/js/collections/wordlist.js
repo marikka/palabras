@@ -1,6 +1,5 @@
   var WordList = Backbone.Collection.extend({
     model: Word,
-    //localStorage: new Backbone.LocalStorage("SomeCollection"),
     url: '/api/words',
     //Use underscore mixin function
     weightedRandom: function () {

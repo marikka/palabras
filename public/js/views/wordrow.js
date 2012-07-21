@@ -8,11 +8,11 @@ var WordRow = Backbone.View.extend({
 
     initialize: function () {
       _.bindAll(this, 'render', 'deleteWord');
-      this.model.on('change', this.render);
-      this.template = this.templateBase.clone();
+      this.model.on('change', this.render, this);
     },
 
     render: function () {
+      var template = this.templateBase.clone();
       var directives = {
         lastAsked: {
           text: function (params) {
@@ -25,9 +25,8 @@ var WordRow = Backbone.View.extend({
           }
         }
       };
-
-      var foo = this.template.render(this.model.toJSON(), directives).children();
-      this.$el.html(foo);
+      
+      this.$el.html(template.render(this.model.toJSON(), directives).children());
 
       return this;
     },

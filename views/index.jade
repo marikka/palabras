@@ -1,0 +1,84 @@
+#app
+  header
+    img(src="img/logo.png")
+    hr
+  .container
+    .row
+      .span12
+        div(class="alert alert-info")
+          button(type="button", class="close", data-dismiss="alert") x
+          strong Tervetuloa!
+          p ´¡palabras!´ auttaa sinua opiskelemaan espanjan sanastoa. Harjoittele sanastoa ´Harjoittele´-sivulla, tai lisää uusia sanoja ´Sanasto´-sivulla. Hauskaa opiskelua! :)
+
+        ul(class="nav nav-pills")
+          li(class="active")
+            a(href="#train", data-toggle="tab") Harjoittele
+          li
+            a(href="#manage", data-toggle="tab") Sanasto
+        div(class="tab-content")
+          
+          div(class="tab-pane active", id="train")
+            form(id="answer", class="well form-inline")
+              div(id="question")
+              input(type="text", id="answerWord", placeholder="espanjaksi", required="", autocomplete="off")
+              button(class="btn btn-primary")
+                i(class="icon-ok icon-white")
+                |  Vastaa
+            table.table(id="answers")
+              thead
+                tr
+                  th(class="span3") Kysymys
+                  th(class="span3") Vastaus
+                  th(class="span6") Oikea vastaus
+              tbody                       
+              
+          div(class="tab-pane", id="manage")
+            form(id="newWord", class="well form-inline")
+              input(type="text", id="word-fi", placeholder="suomeksi", required="", autocomplete="off") 
+              input(type="text", id="word-es", placeholder="espanjaksi", required="", autocomplete="off")
+              button(class="btn btn-primary", id="add")
+                i(class="icon-plus icon-white")
+                |  Lisää sana
+            table.table.table-striped
+              thead
+                tr
+                  th(class="span3") Suomeksi
+                  th(class="span3") Espanjaksi
+                  th(class="span3") Osaaminen
+                  th(class="span2") Viimeeksi kysytty
+                  th(class="span1") Toiminnot
+              tbody
+#templates(style="display:none;")
+  table
+    tbody
+      tr(id="word")
+        td.fi
+        td.es
+        td
+          .progress
+            .rating.bar
+        td.lastAsked
+        td.actions
+          a(class="btn btn-small btn-danger delete", type="button")
+            i(class="icon-trash icon-white")
+            |  Poista
+      tr.trainword
+        td.question
+        td.answer
+        td.correctAnswer
+
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+script(src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js")
+script(src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js")
+script(src="js/backbone.js")
+script(src="js/backbone.localStorage-min.js")
+script(src="js/bootstrap.min.js")
+script(src="js/date.js")
+script(src="js/underscore-weighted-random.js")
+script(src="js/transparency.min.js")
+script(src="js/models/word.js")
+script(src="js/collections/wordlist.js")
+script(src="js/views/wordrow.js")
+script(src="js/views/managewords.js")
+script(src="js/views/trainwords.js")
+script(src="js/palabras.js")

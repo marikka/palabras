@@ -1,52 +1,63 @@
 #app
-  header
-    img(src="img/logo.png")
-    hr
   .container
     .row
+      .span6
+        header
+          img(src="img/logo.png")
+      .span6
+        div#language-selector
+          .btn-group
+            a(class="dropdown-toggle btn", data-toggle="dropdown", href="#")
+              span #{__i("Select language")} 
+              b(class="caret")
+            ul(class="dropdown-menu")
+              li
+                a(href="/setlocale/fi") #{__i("Finnish")}
+              li
+                a(href="/setlocale/en") #{__i("English")}
       .span12
         div(class="alert alert-info")
           button(type="button", class="close", data-dismiss="alert") x
-          strong Tervetuloa!
-          p ´¡palabras!´ auttaa sinua opiskelemaan espanjan sanastoa. Harjoittele sanastoa ´Harjoittele´-sivulla, tai lisää uusia sanoja ´Sanasto´-sivulla. Hauskaa opiskelua! :)
+          strong #{__i("welcome")}
+          p #{__i("introduction")}
 
         ul(class="nav nav-pills")
           li(class="active")
-            a(href="#train", data-toggle="tab") Harjoittele
+            a(href="#train", data-toggle="tab") #{__i("Practice")}
           li
-            a(href="#manage", data-toggle="tab") Sanasto
+            a(href="#manage", data-toggle="tab") #{__i("Vocabulary")}
         div(class="tab-content")
           
           div(class="tab-pane active", id="train")
             form(id="answer", class="well form-inline")
               div(id="question")
-              input(type="text", id="answerWord", placeholder="espanjaksi", required="", autocomplete="off")
+              input(type="text", id="answerWord", placeholder="#{__i("In Spanish")}", required="", autocomplete="off")
               button(class="btn btn-primary")
                 i(class="icon-ok icon-white")
-                |  Vastaa
+                |  #{__i("Answer")}
             table.table(id="answers")
               thead
                 tr
-                  th(class="span3") Kysymys
-                  th(class="span3") Vastaus
-                  th(class="span6") Oikea vastaus
+                  th(class="span3") #{__i("Question")}
+                  th(class="span3") #{__i("Answer")}
+                  th(class="span6") #{__i("Correct answer")}
               tbody                       
               
           div(class="tab-pane", id="manage")
             form(id="newWord", class="well form-inline")
-              input(type="text", id="word-fi", placeholder="suomeksi", required="", autocomplete="off") 
-              input(type="text", id="word-es", placeholder="espanjaksi", required="", autocomplete="off")
+              input(type="text", id="word-fi", placeholder="#{__i("In Finnish")}", required="", autocomplete="off") 
+              input(type="text", id="word-es", placeholder="#{__i("In Spanish")}", required="", autocomplete="off")
               button(class="btn btn-primary", id="add")
                 i(class="icon-plus icon-white")
-                |  Lisää sana
+                |  #{__i("Add word")}
             table.table.table-striped
               thead
                 tr
-                  th(class="span3") Suomeksi
-                  th(class="span3") Espanjaksi
-                  th(class="span3") Osaaminen
-                  th(class="span2") Viimeeksi kysytty
-                  th(class="span1") Toiminnot
+                  th(class="span3") #{__i("In Finnish")}
+                  th(class="span3") #{__i("In Spanish")}
+                  th(class="span3") #{__i("Rating")}
+                  th(class="span2") #{__i("Last asked")}
+                  th(class="span1") #{__i("Actions")}
               tbody
 #templates(style="display:none;")
   table
@@ -61,7 +72,7 @@
         td.actions
           a(class="btn btn-small btn-danger delete", type="button")
             i(class="icon-trash icon-white")
-            |  Poista
+            |  #{__i("Delete")}
       tr.trainword
         td.question
         td.answer

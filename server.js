@@ -1,26 +1,50 @@
 var express  = require('express');
 var mongoose = require('mongoose');
+var i18n     = require("i18n");
 var app      = express.createServer();
 var port     = process.env.PORT || 5000;
 
-//Configure express
+//Set locale based on cookie
+var setLocale = function (req, res, next) {
+  i18n.setLocale(req.cookies.palabras_locale);
+  next();
+};
 
+//Configure express
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.static(__dirname + '/public'));
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
   app.use(express.bodyParser()); //Used to parse JSON requests into req.body
+  app.use(express.cookieParser());
   app.use(express.methodOverride());
+  app.use(setLocale);
   app.use(app.router);
+
 });
 
 app.configure('development', function(){
   app.set('view options', { pretty: true });
 });
 
+//Configure i18n
+i18n.configure({
+    // setup some locales - other locales default to en silently
+    locales:['en', 'fi', 'es'],
+});
+// register i18n helpers for use in templates
+app.helpers({
+  __i: i18n.__,
+  __n: i18n.__n
+});
 
 
+
+
+
+
+//Configure MongoDB
 var dbURL = process.env.MONGOHQ_URL || 'mongodb://localhost/palabras';
 //Connect to mongoDB database
 mongoose.connect(dbURL);
@@ -34,7 +58,6 @@ var Word = mongoose.model('Word', new mongoose.Schema({
 }));
 
 //Routes/////////////////////////////////
-
 app.get('/', function (req, res) {
   res.render('index');
 })
@@ -99,6 +122,12 @@ app.delete('/api/words/:id', function(req, res){
       }
     });
   });
+});
+
+//Set locale
+app.get('/setlocale/:locale', function(req, res){
+  res.cookie('palabras_locale', req.params.locale, {path: '/'});
+  return res.redirect('/');
 });
 
 //Start server

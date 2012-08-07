@@ -1,6 +1,8 @@
   var TrainWords = Backbone.View.extend({
     el: $('#train'),
 
+    templateBase: $('#templates .trainword').detach(), 
+
     events: {
       'submit #answer': 'checkAnswer'
     },
@@ -18,19 +20,31 @@
 
     checkAnswer: function (e) {
       e.preventDefault();
-
       var answer = $("#answerWord", this.el).val();
       $('form', this.el)[0].reset();
 
-      if (this.question.get('es') === answer) {
-        this.question.save({lastAsked: new Date(), rating: this.question.get('rating') + 1});
-        $('#answers tbody', this.el).prepend('<tr><td>'+this.question.get('fi')+'</td>'+'<td>'+answer+'</td><td></td></tr>');
-      } else {
-        this.question.save({lastAsked: new Date(), rating: this.question.get('rating') - 1});
-        $('#answers tbody', this.el).prepend('<tr class="mistake"><td>'+this.question.get('fi')+'</td>'+'<td>'+answer+'</td><td>'+this.question.get('es')+'</td></tr>');
-      }
+      var question      = this.question.get('fi');
+      var correctAnswer = this.question.get('es');
+      var isCorrect     = correctAnswer === answer;
+      var correctAnswer = (isCorrect ? '' : correctAnswer);
       
-      this.newQuestion(); //Pick a new word
+      //Render answer row
+      var template = this.templateBase.clone();
+      var directives = {
+        trainword: {
+          class: function (params) {
+            return params.value + (isCorrect ? '' : ' mistake');
+          }
+        }
+      };
+      $('#answers tbody', this.el).prepend(template.render({question: question, answer: answer, correctAnswer: correctAnswer}, directives));
+
+      //Update model
+      var rating = this.question.get('rating') + (isCorrect ? 1 : -1);
+      this.question.save({lastAsked: new Date(), rating: rating});
+      
+      //Pick a new word
+      this.newQuestion();
     },
 
     //Pick a new word. Weights are inversely probable to their rating. 1% chance of getting a 100-rated word 

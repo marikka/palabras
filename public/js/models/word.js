@@ -1,5 +1,5 @@
   var Word = Backbone.Model.extend({
-    idAttribute: "_id",
+    idAttribute: "_id", //matches with mongodb
     defaults: {
       rating: 0
     },

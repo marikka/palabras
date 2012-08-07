@@ -4,7 +4,10 @@ var app      = express.createServer();
 var port     = process.env.PORT || 5000;
 
 //Configure express
-app.configure('development', function(){
+
+app.configure(function(){
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
   app.use(express.static(__dirname + '/public'));
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
   app.use(express.bodyParser()); //Used to parse JSON requests into req.body
@@ -12,12 +15,8 @@ app.configure('development', function(){
   app.use(app.router);
 });
 
-app.configure('production', function(){
-  app.use(express.static(__dirname + '/public'));
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-  app.use(express.bodyParser()); //Used to parse JSON requests into req.body
-  app.use(express.methodOverride());
-  app.use(app.router);
+app.configure('development', function(){
+  app.set('view options', { pretty: true });
 });
 
 
@@ -36,8 +35,8 @@ var Word = mongoose.model('Word', new mongoose.Schema({
 
 //Routes/////////////////////////////////
 
-app.get('/', function(req, res){
-  res.sendfile(__dirname + '/public/index.html')
+app.get('/', function (req, res) {
+  res.render('index');
 })
 
 //Read all words

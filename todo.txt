@@ -13,7 +13,7 @@
 -Write tests
 -Add complete dictionaries/word lists from JSON files
 -Extend to arbitrary languages
--Use jade templates
+
 -Use transparency
 -Use RequireJS(?)
 -Trim & lowercase input
@@ -22,3 +22,4 @@ Done:
 --------------------------
 -Persist to localstorage
 -Persist to (mongo?)DB
+-Use jade templates

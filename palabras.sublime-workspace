@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"cor",
+				"correctAnswer"
+			],
+			[
+				"ans",
+				"answer"
+			],
+			[
+				"te",
+				"text"
+			],
+			[
+				"pro",
+				"progress"
+			],
+			[
+				"temp",
+				"templateBase"
+			],
+			[
 				"clic",
 				"click_button"
 			],
@@ -55,15 +75,79 @@
 			"file": "public/js/palabras.js",
 			"settings":
 			{
-				"buffer_size": 4682,
+				"buffer_size": 206,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/marikka/Library/Application Support/Sublime Text 2/Packages/sublime-jslint/sublime-jslint.sublime-settings",
+			"file": "public/js/views/wordrow.js",
 			"settings":
 			{
-				"buffer_size": 405,
+				"buffer_size": 895,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/js/views/trainwords.js",
+			"settings":
+			{
+				"buffer_size": 1730,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/js/collections/wordlist.js",
+			"settings":
+			{
+				"buffer_size": 254,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/js/models/word.js",
+			"settings":
+			{
+				"buffer_size": 348,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "slim/index.html.slim",
+			"settings":
+			{
+				"buffer_size": 3658,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layout.jade",
+			"settings":
+			{
+				"buffer_size": 166,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/index.jade",
+			"settings":
+			{
+				"buffer_size": 3148,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "todo.txt",
+			"settings":
+			{
+				"buffer_size": 497,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 2388,
 				"line_ending": "Unix"
 			}
 		}
@@ -71,9 +155,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 267.0,
+		"height": 107.0,
 		"selected_items":
 		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
 			[
 				"lint",
 				"Preferences: JSLint Settings – Default"
@@ -91,7 +179,7 @@
 				"Preferences: JSLint Settings – Default"
 			]
 		],
-		"width": 467.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -108,8 +196,12 @@
 	},
 	"file_history":
 	[
-		"/Users/marikka/Library/Application Support/Sublime Text 2/Packages/User/sublime-jslint.sublime-settings",
+		"/Users/marikka/dev/palabras/public/js/views/managewords.js",
+		"/Users/marikka/dev/palabras/package.json",
+		"/Users/marikka/dev/palabras/views/index.jade",
+		"/Users/marikka/dev/palabras/views/layout.jade",
 		"/Users/marikka/Library/Application Support/Sublime Text 2/Packages/sublime-jslint/sublime-jslint.sublime-settings",
+		"/Users/marikka/Library/Application Support/Sublime Text 2/Packages/User/sublime-jslint.sublime-settings",
 		"/Users/marikka/Tyot/tanko/app/assets/stylesheets/main.scss",
 		"/Users/marikka/Tyot/tanko/app/views/lessons/_index_table.html.slim",
 		"/Users/marikka/Tyot/tanko/config/routes.rb",
@@ -231,11 +323,7 @@
 		"/home/marikka/dev/tanko/app/views/users/index.html.slim",
 		"/home/marikka/dev/tanko/app/views/users/show.html.slim",
 		"/home/marikka/dev/tanko/app/views/lessons/_form.html.erb",
-		"/home/marikka/dev/tanko/app/controllers/lessons_controller.rb",
-		"/home/marikka/dev/tanko/app/controllers/lesson_types_controller.rb",
-		"/home/marikka/dev/tanko/app/views/devise/sessions/new.html.slim",
-		"/home/marikka/dev/tanko/app/models/attendance.rb",
-		"/home/marikka/dev/tanko/app/views/devise/registrations/edit.html.erb"
+		"/home/marikka/dev/tanko/app/controllers/lessons_controller.rb"
 	],
 	"find":
 	{
@@ -254,6 +342,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"src",
+			"WordView",
 			"Tunti",
 			"Luo",
 			"options",
@@ -332,7 +422,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 9,
 			"sheets":
 			[
 				{
@@ -340,15 +430,15 @@
 					"file": "public/js/palabras.js",
 					"settings":
 					{
-						"buffer_size": 4682,
+						"buffer_size": 206,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4029,
-								4029
+								98,
+								98
 							]
 						],
 						"settings":
@@ -358,31 +448,249 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2564.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/Users/marikka/Library/Application Support/Sublime Text 2/Packages/sublime-jslint/sublime-jslint.sublime-settings",
+					"file": "public/js/views/wordrow.js",
 					"settings":
 					{
-						"buffer_size": 405,
+						"buffer_size": 895,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								158,
-								158
+								120,
+								120
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/js/views/trainwords.js",
+					"settings":
+					{
+						"buffer_size": 1730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1446,
+								1446
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/js/collections/wordlist.js",
+					"settings":
+					{
+						"buffer_size": 254,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/js/models/word.js",
+					"settings":
+					{
+						"buffer_size": 348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								83,
+								83
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "slim/index.html.slim",
+					"settings":
+					{
+						"buffer_size": 3658,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2721,
+								2721
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Slim/Ruby-Slim.tmbundle/Syntaxes/Ruby Slim.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 811.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/layout.jade",
+					"settings":
+					{
+						"buffer_size": 166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								166,
+								166
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/index.jade",
+					"settings":
+					{
+						"buffer_size": 3148,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1380,
+								1380
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 415.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "todo.txt",
+					"settings":
+					{
+						"buffer_size": 497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								497,
+								497
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "server.js",
+					"settings":
+					{
+						"buffer_size": 2388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								569,
+								569
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,

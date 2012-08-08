@@ -19,6 +19,6 @@
 	"Finnish": "Finnish",
 	"English": "English",
 	"Select language": "Select language",
-	"title": "title",
+	"title": "Palabras - Learn spanish vocabulary",
 	"Manage vocabulary": "Manage vocabulary"
 }

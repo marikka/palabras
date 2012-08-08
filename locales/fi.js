@@ -16,6 +16,6 @@
 	"Select language": "Select language",
 	"Finnish": "Finnish",
 	"English": "English",
-	"title": "title",
+	"title": "Palabras - opi espanjan sanastoa",
 	"Manage vocabulary": "Muokkaa sanastoa"
 }

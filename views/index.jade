@@ -9,6 +9,7 @@
         div#language-selector
           .btn-group
             a(class="dropdown-toggle btn", data-toggle="dropdown", href="#")
+              i.icon-flag
               span #{__i("Select language")} 
               b(class="caret")
             ul(class="dropdown-menu")
@@ -22,11 +23,15 @@
           strong #{__i("welcome")}
           p #{__i("introduction")}
 
-        ul(class="nav nav-pills")
+        ul(class="nav nav-tabs", id="main-nav")
           li(class="active")
-            a(href="#train", data-toggle="tab") #{__i("Practice")}
+            a(href="#train", data-toggle="tab")
+              i.icon-bolt 
+              | #{__i("Practice")}
           li
-            a(href="#manage", data-toggle="tab") #{__i("Vocabulary")}
+            a(href="#manage", data-toggle="tab")
+              i.icon-book
+              | #{__i("Manage vocabulary")}
         div(class="tab-content")
           
           div(class="tab-pane active", id="train")

@@ -21,6 +21,18 @@ header {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
+
+#main-nav a {
+  font-size: 1.5em;
+  padding: 1.1em;
+  //border: 1px solid #ddd;
+}
+
+#main-nav a i {
+  font-size: 1.1em;
+  padding-right: 0.5em;
+}
+
 #language-selector {
   margin-top: 20px;
   text-align: right;
@@ -31,6 +43,10 @@ header {
     text-align: left;
     width: inherit;
     display: inline-block;
+}
+
+#language-selector .icon-flag {
+  padding-right: 10px;
 }
 
 #question {

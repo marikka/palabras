@@ -1,6 +1,6 @@
 {
 	"welcome": "Tervetuloa!",
-	"introduction": "´¡palabras!´ auttaa sinua opiskelemaan espanjan sanastoa. Harjoittele sanastoa ´Harjoittele´-sivulla, tai lisää uusia sanoja ´Sanasto´-sivulla. Hauskaa opiskelua! :)",
+	"introduction": "´¡palabras!´ auttaa sinua opiskelemaan espanjan sanastoa. Hauskaa opiskelua! :)",
 	"Practice": "Harjoittele",
 	"Vocabulary": "Sanasto",
 	"In Spanish": "espanjaksi",
@@ -15,5 +15,7 @@
 	"Delete": "Poista",
 	"Select language": "Select language",
 	"Finnish": "Finnish",
-	"English": "English"
+	"English": "English",
+	"title": "title",
+	"Manage vocabulary": "Muokkaa sanastoa"
 }

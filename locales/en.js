@@ -18,5 +18,7 @@
 	"Language": "Language",
 	"Finnish": "Finnish",
 	"English": "English",
-	"Select language": "Select language"
+	"Select language": "Select language",
+	"title": "title",
+	"Manage vocabulary": "Manage vocabulary"
 }

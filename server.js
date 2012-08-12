@@ -11,10 +11,11 @@ var setLocale = function (req, res, next) {
 };
 
 //Configure express
+var oneYear = 31557600000;
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/public', {maxAge: oneYear}));
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
   app.use(express.bodyParser()); //Used to parse JSON requests into req.body
   app.use(express.cookieParser());
